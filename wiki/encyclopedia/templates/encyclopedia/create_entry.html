@@ -1,0 +1,25 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    {{ page_action }}
+{% endblock %}
+
+{% block body %}
+    <h1>{{ page_action }}</h1>
+    <form action="{% url 'create_entry' %}" method="post">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-md-10">
+                <div class="mb-2">
+                    <input type="text" name="title" placeholder="Title" class="form-control">
+                </div>
+                <div>
+                    <textarea class="form-control" name="content" rows="6" placeholder="Description"></textarea>
+                </div>
+                <div class="mt-2">
+                    <input type="submit" class="btn btn-primary">
+                </div>
+            </div>
+        </div>
+    </form>
+{% endblock %}
